@@ -4,6 +4,8 @@
     border: 3px solid black;
     background: #F0FFFF;
     padding: 40px;
+	float: left;
+	margin: 5px;
 }
 
 .row {
@@ -31,9 +33,23 @@ img {
     z-index: 3;
 	box-sizing: border-box;
 	
+	
 }
 
 .checked {
     background: #696969;
 	border-radius: 2px;
+}
+
+.filter{
+	filter:invert(100%) blur(5px);
+}
+
+#exit{
+	background: #F0FFFF;
+	width: 500px;
+    height: 680px;
+	float: left;
+	border: 3px solid black;
+	margin: 5px;
 }
