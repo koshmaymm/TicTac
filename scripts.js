@@ -5,7 +5,7 @@ window.onload = function () {
 	container.count = 1;
     container.someOneCell = document.querySelectorAll(".cell");
 	container.playField = [[], []];
-	
+	container.test = [11, 12, 13];
 	
 	container.getClick = function(e){
 		var targetCell = e.target;
@@ -21,7 +21,6 @@ window.onload = function () {
             targetCell.removeAttribute('data-number');
             targetCell.setAttribute('data-mark', mark);
             container.pushPicture(e);
-			
         }
 	}
 		
@@ -44,19 +43,25 @@ window.onload = function () {
 	container.pushFirstPicture = function (a){
 		container.playField[0].push(a);
 		container.sortPlayField(container.playField[0]);
-		var p = document.createElement('p');
-		p.innerHTML ="First part " + container.playField[0];
-		exit.appendChild(p);
+		//var p = document.createElement('p');
+		//p.innerHTML ="First part " + container.playField[0];
+		//exit.appendChild(p);
 	}
 	container.pushSecondPicture = function (a){
 		container.playField[1].push(a);
 		container.sortPlayField(container.playField[1]);
-		var p = document.createElement('p');
-		p.innerHTML ="Second part " + container.playField[1];
-		exit.appendChild(p);
+		//var p = document.createElement('p');
+		//p.innerHTML ="Second part " + container.playField[1];
+		//exit.appendChild(p);
 	}
 	container.sortPlayField = function(mass){
-		mass.join("");
-		console.log(mass);
+		mass.sort();
+		container.checkMass(mass);
 	}
+	container.checkMass = function (mass){
+				if (container.count < 5) {return;}
+				alert (mass.join() === container.test.join());
+	};
+	
+	
 }
