@@ -4,8 +4,8 @@
     border: 3px solid black;
     background: #F0FFFF;
     padding: 40px;
-	float: left;
-	margin: 5px;
+    float: left;
+    margin: 5px;
 }
 
 .row {
@@ -19,7 +19,7 @@
     outline: solid black;
     float: left;
     z-index: 5;
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -31,25 +31,23 @@ img {
     margin: 0;
     padding: 8%;
     z-index: 3;
-	box-sizing: border-box;
-	
-	
+    box-sizing: border-box;
 }
 
 .checked {
     background: #696969;
-	border-radius: 2px;
+    border-radius: 2px;
 }
 
-.filter{
-	filter:invert(100%) blur(5px);
+.filter {
+    filter: invert(100%) blur(5px);
 }
 
-#exit{
-	background: #F0FFFF;
-	width: 500px;
+#exit {
+    background: #F0FFFF;
+    width: 500px;
     height: 680px;
-	float: left;
-	border: 3px solid black;
-	margin: 5px;
+    float: left;
+    border: 3px solid black;
+    margin: 5px;
 }
