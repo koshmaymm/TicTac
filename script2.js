@@ -3,20 +3,15 @@ window.onload = function () {
     container.count = 1;
     container.someOneCell = document.querySelectorAll(".cell");
     container.field = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-	
-	container.playerAA = document.getElementById("cell11");
-	container.playerAB = document.getElementById("cell12");
-	container.playerAC = document.getElementById("cell13");
-	
-	container.playerBA = document.getElementById("cell21");
-	container.playerBB = document.getElementById("cell22");
-	container.playerBC = document.getElementById("cell23");
-	
-	container.playerCA = document.getElementById("cell31");
-	container.playerCB = document.getElementById("cell32");
-	container.playerCC = document.getElementById("cell33");
-	
-	
+    container.playerAA = document.getElementById("cell11");
+    container.playerAB = document.getElementById("cell12");
+    container.playerAC = document.getElementById("cell13");
+    container.playerBA = document.getElementById("cell21");
+    container.playerBB = document.getElementById("cell22");
+    container.playerBC = document.getElementById("cell23");
+    container.playerCA = document.getElementById("cell31");
+    container.playerCB = document.getElementById("cell32");
+    container.playerCC = document.getElementById("cell33");
     container.getClick = function (e) {
         var targetCell = e.target;
         if (targetCell.getAttribute('data-number') === null) {
@@ -84,63 +79,65 @@ window.onload = function () {
         exit2.appendChild(p);
     }
     container.monitorFieldOfPlay = function () {
-        if (container.count < 5) {return;}
+        if (container.count < 5) {
+            return;
+        }
         if ((container.field[0] === container.field[1]) && (container.field[2] === container.field[1]) && (container.field[2] !== 0)) {
-			container.stopPropagationOfGame();
-			container.changeGorizontalLines(container.playerAA, container.playerAB, container.playerAC);
+            container.stopPropagationOfGame();
+            container.changeGorizontalLines(container.playerAA, container.playerAB, container.playerAC);
         }
         if ((container.field[3] === container.field[4]) && (container.field[3] === container.field[5]) && (container.field[3] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeGorizontalLines(container.playerBA, container.playerBB, container.playerBC);
+            container.changeGorizontalLines(container.playerBA, container.playerBB, container.playerBC);
         }
         if ((container.field[6] === container.field[7]) && (container.field[6] === container.field[8]) && (container.field[6] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeGorizontalLines(container.playerCA, container.playerCB, container.playerCC);
+            container.changeGorizontalLines(container.playerCA, container.playerCB, container.playerCC);
         }
-		if ((container.field[0] === container.field[3]) && (container.field[6] === container.field[0]) && (container.field[6] !== 0)) {
+        if ((container.field[0] === container.field[3]) && (container.field[6] === container.field[0]) && (container.field[6] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeVerticalLines(container.playerAA, container.playerBA, container.playerCA);
+            container.changeVerticalLines(container.playerAA, container.playerBA, container.playerCA);
         }
-		if ((container.field[1] === container.field[4]) && (container.field[7] === container.field[1]) && (container.field[7] !== 0)) {
+        if ((container.field[1] === container.field[4]) && (container.field[7] === container.field[1]) && (container.field[7] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeVerticalLines(container.playerAB, container.playerBB, container.playerCB);
+            container.changeVerticalLines(container.playerAB, container.playerBB, container.playerCB);
         }
-		if ((container.field[2] === container.field[5]) && (container.field[8] === container.field[2]) && (container.field[8] !== 0)) {
+        if ((container.field[2] === container.field[5]) && (container.field[8] === container.field[2]) && (container.field[8] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeVerticalLines(container.playerAC, container.playerBC, container.playerCC);
+            container.changeVerticalLines(container.playerAC, container.playerBC, container.playerCC);
         }
-		if ((container.field[0] === container.field[4]) && (container.field[8] === container.field[0]) && (container.field[8] !== 0)) {
+        if ((container.field[0] === container.field[4]) && (container.field[8] === container.field[0]) && (container.field[8] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeDiagonalUpDownLines(container.playerAA, container.playerBB, container.playerCC);
+            container.changeDiagonalUpDownLines(container.playerAA, container.playerBB, container.playerCC);
         }
-		if ((container.field[2] === container.field[4]) && (container.field[6] === container.field[2]) && (container.field[6] !== 0)) {
+        if ((container.field[2] === container.field[4]) && (container.field[6] === container.field[2]) && (container.field[6] !== 0)) {
             container.stopPropagationOfGame();
-			container.changeDiagonalDownUpLines(container.playerAC, container.playerBB, container.playerCA);
-        }		
+            container.changeDiagonalDownUpLines(container.playerAC, container.playerBB, container.playerCA);
+        }
     }
-	container.stopPropagationOfGame = function (){
-		for (var i = 0; i < container.someOneCell.length; i++) {
-        container.someOneCell[i].removeEventListener("click", container.getClick, false);
-		}
-	}
-    container.changeGorizontalLines = function (a,b,c) {
-		a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
-		b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
-		c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
+    container.stopPropagationOfGame = function () {
+        for (var i = 0; i < container.someOneCell.length; i++) {
+            container.someOneCell[i].removeEventListener("click", container.getClick, false);
+        }
     }
-	container.changeVerticalLines = function (a,b,c){
-		a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
-		b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
-		c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
-	}
-	container.changeDiagonalUpDownLines = function (a,b,c){
-		a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
-		b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
-		c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
-	}
-	container.changeDiagonalDownUpLines = function (a,b,c){
-		a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
-		b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
-		c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
-	}
+    container.changeGorizontalLines = function (a, b, c) {
+        a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
+        b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
+        c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
+    }
+    container.changeVerticalLines = function (a, b, c) {
+        a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
+        b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
+        c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
+    }
+    container.changeDiagonalUpDownLines = function (a, b, c) {
+        a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
+        b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
+        c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
+    }
+    container.changeDiagonalDownUpLines = function (a, b, c) {
+        a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
+        b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
+        c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
+    }
 }
