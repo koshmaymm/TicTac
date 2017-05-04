@@ -126,9 +126,9 @@ window.onload = function () {
         c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
     }
     container.changeVerticalLines = function (a, b, c) {
-        a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
-        b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
-        c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_gorizontal_line.JPG';
+        a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_vertical_line.JPG';
+        b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_vertical_line.JPG';
+        c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_vertical_line.JPG';
     }
     container.changeDiagonalUpDownLines = function (a, b, c) {
         a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
