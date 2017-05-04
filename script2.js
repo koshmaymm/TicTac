@@ -2,6 +2,7 @@ window.onload = function firstPlay() {
     var container = {};
     container.count = 1;
     container.someOneCell = document.querySelectorAll(".cell");
+	
     container.field = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     container.playerAA = document.getElementById("cell11");
     container.playerAB = document.getElementById("cell12");
@@ -28,6 +29,8 @@ window.onload = function firstPlay() {
     for (var i = 0; i < container.someOneCell.length; i++) {
         container.someOneCell[i].addEventListener("click", container.getClick, false);
     }
+	
+	
     container.pushPicture = function (e) {
         var newImg = document.createElement('img');
         newImg.src = (container.count % 2 !== 0) ? 'img/tic.JPG' : 'img/tac.JPG';
@@ -134,7 +137,7 @@ window.onload = function firstPlay() {
         c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
 		container.addWinClass(a,b,c);
     }
-	container.addWinClass = function (a,b,c){
+	container.addWinClass = function (a, b, c){
 		a.childNodes[0].classList.add("filter");
 		b.childNodes[0].classList.add("filter");
 		c.childNodes[0].classList.add("filter");
@@ -144,8 +147,8 @@ window.onload = function firstPlay() {
 		var p = document.createElement('p');
         p.innerHTML = (container.count % 2 === 0) ? 'First Player Win' : 'Second Player Win';
         exit2.appendChild(p);
-		container.nextPlay();
-		
+		container.restart = document.getElementById("res");
+		container.restart.addEventListener("click", container.nextPlay, false);
 	}
 	container.nextPlay = function(){
 		window.location.reload();
