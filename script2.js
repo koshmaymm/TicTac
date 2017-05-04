@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function firstPlay() {
     var container = {};
     container.count = 1;
     container.someOneCell = document.querySelectorAll(".cell");
@@ -18,11 +18,9 @@ window.onload = function () {
             return;
         }
         else {
-            var mark = (container.count % 2 !== 0) ? 2 : 1;
             var action = targetCell.getAttribute('data-number');
             targetCell.removeAttribute('data-number');
             container.pushPicture(e);
-            container.appendExit(action);
             container.changeFieldOfPlay(action);
             container.monitorFieldOfPlay();
         }
@@ -36,11 +34,6 @@ window.onload = function () {
         e.target.appendChild(newImg);
         e.target.classList.add("checked");
         container.count++;
-    }
-    container.appendExit = function (a) {
-        var p = document.createElement("p");
-        p.innerHTML = a;
-        exit.appendChild(p);
     }
     container.changeFieldOfPlay = function (a) {
         switch (+a) {
@@ -74,9 +67,6 @@ window.onload = function () {
         default:
             alert('Ошибка');
         }
-        var p = document.createElement("p");
-        p.innerHTML = container.field;
-        exit2.appendChild(p);
     }
     container.monitorFieldOfPlay = function () {
         if (container.count < 5) {
@@ -124,20 +114,40 @@ window.onload = function () {
         a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
         b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
         c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_gorizontal_line.JPG' : 'img/tac_gorizontal_line.JPG';
+		container.addWinClass(a,b,c);	
     }
     container.changeVerticalLines = function (a, b, c) {
         a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_vertical_line.JPG';
         b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_vertical_line.JPG';
         c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic_vertical_line.JPG' : 'img/tac_vertical_line.JPG';
+		container.addWinClass(a,b,c);
     }
     container.changeDiagonalUpDownLines = function (a, b, c) {
         a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
         b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
         c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-left-right-line.JPG' : 'img/tac_diagonal_left_right_line.JPG';
+		container.addWinClass(a,b,c);
     }
     container.changeDiagonalDownUpLines = function (a, b, c) {
         a.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
         b.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
         c.childNodes[0].src = (container.count % 2 === 0) ? 'img/tic-diagonal-right-left-line.JPG' : 'img/tac_diagonal_right_left_line.JPG';
+		container.addWinClass(a,b,c);
     }
+	container.addWinClass = function (a,b,c){
+		a.childNodes[0].classList.add("filter");
+		b.childNodes[0].classList.add("filter");
+		c.childNodes[0].classList.add("filter");
+		container.resultGame();
+	}
+	container.resultGame = function (){
+		var p = document.createElement('p');
+        p.innerHTML = (container.count % 2 === 0) ? 'First Player Win' : 'Second Player Win';
+        exit2.appendChild(p);
+		container.nextPlay();
+		
+	}
+	container.nextPlay = function(){
+		window.location.reload();
+	}
 }
