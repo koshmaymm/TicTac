@@ -1,9 +1,13 @@
 window.onload = function () {
     var container = {};
+	var mark;
     container.count = 1;
     container.someOneCell = document.querySelectorAll(".cell");
     container.playField = [[], []];
     container.testResults = [[11, 12, 13], [21, 22, 23], [31, 32, 33], [11, 21, 31], [12, 22, 32], [13, 23, 33], [13, 22, 31], [11, 22, 33]];
+	container.dataField = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+	
+	
     container.getClick = function (e) {
         var targetCell = e.target;
         if (targetCell.getAttribute('data-number') === null) {
