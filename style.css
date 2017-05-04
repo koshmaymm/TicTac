@@ -54,11 +54,27 @@ img {
 
 #exit2 {
 	background: #F0FFFF;
-    min-width: 120px;
-    min-height: 50px;
-    float: right;
+    min-width: 150px;
+    min-height: 60px;
+    float: left;
     border: 3px solid black;
-    margin: 5px;
-	padding: 5px;
+    margin: 50px;
+	
 	text-align: center;
+	vertical-align: center;
+}
+#res{
+	max-width: 120px;
+    max-height: 120px;
+	border-radius: 5px;
+	border: 3px solid black;
+	overflow: hidden;
+	cursor: pointer;
+	background-color: #FFE4B5;
+	text-decoration: none;
+	margin: 50px;
+}
+#resImg{
+	max-width: 50px;
+    max-height: 50px;
 }
