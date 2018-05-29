@@ -1,5 +1,6 @@
 window.onload = function () {
     var container = {};
+    
     container.count = 1;
     container.someOneCell = document.querySelectorAll(".cell");
     container.field = [0, 0, 0, 0, 0, 0, 0, 0, 0];
